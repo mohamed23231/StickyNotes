@@ -1,0 +1,42 @@
+<section id="signUp">
+    <div class="container w-50 m-auto ">
+        <form action="" [formGroup]='signUp' (ngSubmit)="signUp.valid&&formData()">
+            <div class="form">
+                <div class="row my-3">
+                    <div class="col-md-6">
+                        <input  [class.is-valid]='signUp.get("first_name").errors==null'  formControlName='first_name' type="text" class="form-control" placeholder="Enter First Name">
+                        <div class="alert alert-danger" *ngIf='signUp.get("first_name").errors!=null&&signUp.get("first_name").touched'>First Name isn't valid</div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <input [class.is-valid]='signUp.get("last_name").errors==null'  formControlName="last_name" type="text" class="form-control" placeholder="Enter Last Name">
+                        <div class="alert alert-danger" *ngIf='signUp.get("last_name").errors!=null&&signUp.get("last_name").touched'>Last Name isn't valid</div>
+
+                    </div>
+
+
+                </div>
+
+                <input [class.is-valid]='signUp.get("email").errors==null' formControlName="email" type="email" placeholder="Enter Email" class="form-control my-3">
+                <div class="alert alert-danger" *ngIf='signUp.get("email").errors!=null&&signUp.get("email").touched'>Email isn't valid</div>
+
+
+                <input [class.is-valid]='signUp.get("age").errors==null' formControlName="age" type="number" placeholder="Enter age" class="form-control my-3">
+                <div class="alert alert-danger" *ngIf='signUp.get("age").errors!=null&&signUp.get("age").touched'>Age isn't valid</div>
+
+
+                <input [class.is-valid]='signUp.get("password").errors==null'  formControlName="password" type="password" placeholder="Enter Password" class="form-control my-3">
+                <div class="alert alert-danger" *ngIf='signUp.get("password").errors!=null&&signUp.get("password").touched'>password isn't valid</div>
+
+
+                <button [disabled]='signUp.invalid' class="btn btn-primary w-100 mb-3 "><span *ngIf="!messageTrue">signUp</span><span  *ngIf="messageTrue">Waiting ...</span></button>
+                <div class="success w-50 text-center bg-success p-3  m-auto rounded"*ngIf='responeMessage' > <p>success</p></div>
+                <div class="success w-50 text-center bg-secondary p-3  m-auto rounded text-danger"*ngIf='responeError' > <p>{{responeErrorMessage}}</p></div>
+
+            </div>
+    
+        </form>
+    </div>
+</section>

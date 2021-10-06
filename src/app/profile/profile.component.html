@@ -1,0 +1,154 @@
+<section  id="profile" class="py-5">
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-primary float-right"  data-toggle="modal" data-target="#addNote" >Add Note</button>
+            </div>
+            <div class="col-md-3 my-2" *ngFor='let note of allNotes'>
+                <div class="note text-center p-3">
+                    <div class="col-md-12">
+                        <i class="fas fa-ellipsis-v float-right py-2" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                        <div class="dropdown">
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#editeNote">Edite <i class="fas fa-edit text-primary px-1"></i></a>
+                              <a (click)='getID(note._id)' class="dropdown-item" data-toggle="modal" data-target="#deleteNote" href="#">Delete <i class="fas fa-trash-alt text-danger px-1"></i></a>
+                            </div>
+                          </div>
+                    </div>
+                    <br>
+                    <h2>
+                        {{note.title}}</h2>
+                    <p>{{note.desc}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ******************************************Add Note***************************************** -->
+<!-- Button trigger modal -->
+
+
+
+
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade " id="addNote" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form action="" [formGroup]='addNote' (ngSubmit)='addData()'>
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"> title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input formControlName="title" class="form-control mb-2" type="text" placeholder="Title">
+                    </div>
+                    <div class="col-md-12">
+                        <textarea formControlName="desc" class="form-control" placeholder="Add Your Note" id="" cols="30" rows="10"></textarea>
+                  </div>
+  
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button  class="btn btn-danger" data-dismiss="modal">cancel</button>
+            <button  class="btn btn-info">Save Note</button>
+          </div>
+        </div>
+  
+      </form>
+    </div>
+  </div>
+  <!-- ******************************************\Add Note/***************************************** -->
+
+
+  <!-- ******************************************Edite Note***************************************** -->
+<!-- Button trigger modal -->
+
+
+
+
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="editeNote" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"> title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-12">
+                      <input class="form-control mb-2" type="text" placeholder="Title">
+                  </div>
+                  <div class="col-md-12">
+                      <textarea class="form-control" placeholder="Add Your Note" id="" cols="30" rows="10"></textarea>
+                </div>
+
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">cancel</button>
+          <button type="button" class="btn btn-info">Save Note</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ******************************************\Edite Note/***************************************** -->
+
+
+
+  <!-- ******************************************Delete Note***************************************** -->
+<!-- Button trigger modal -->
+
+
+
+
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="deleteNote" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"> Delete Note</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-12 text-center text-info">
+                      <p>Do you want really delete this note ?</p>
+                      <p>press cannot to be undone</p>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">cancel</button>
+          <button (click)='deleteNotes()' class="btn btn-info">Delete Note</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ******************************************\Delete Note/***************************************** -->

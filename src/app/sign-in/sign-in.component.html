@@ -1,0 +1,17 @@
+<section id="signIn">
+    <form action="" [formGroup]='signIn' (ngSubmit)='formData()' >
+        <div class="container  ">
+            <div class="form w-50 m-auto">
+                <input formControlName='email' type="emai
+                l" placeholder="Enter Email" class="form-control my-3"  [class.is-valid]='signIn.get("email").errors==null' >
+                <div class="alert alert-danger" *ngIf='signIn.get("email").errors!=null&&signIn.get("email").touched'>Email isn't valid</div>
+
+                <input formControlName='password' type="password" placeholder="Enter Password" class="form-control my-3"  [class.is-valid]='signIn.get("password").errors==null'>
+                <div class="alert alert-danger" *ngIf='signIn.get("password").errors!=null&&signIn.get("password").touched'>password isn't valid</div>
+
+                <button class="btn btn-primary w-100 ">SignIn</button>
+            </div>
+        
+        </div>    
+    </form>
+</section>
